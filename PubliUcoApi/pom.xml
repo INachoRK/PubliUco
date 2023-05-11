@@ -8,11 +8,11 @@
 		<version>3.0.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>co.edu.uco.publiuco.api</groupId>
+	<groupId>co.edu.uco.publiuco</groupId>
 	<artifactId>PubliUcoApi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>PubliUcoApi</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Exponer como api los servicios de negocio a los diferentes clientes que podrán consumirlos como servicios REST.</description>
 	<properties>
 		<java.version>20</java.version>
 	</properties>

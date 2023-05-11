@@ -7,7 +7,7 @@ import co.edu.uco.publiuco.business.domain.CalificacionDomain;
 import co.edu.uco.publiuco.dto.CalificacionDTO;
 import co.edu.uco.publiuco.entities.CalificacionEntity;
 
-public class CalificacionAssembler implements Assembler<CalificacionDomain, CalificacionDTO, CalificacionEntity> {
+public  class CalificacionAssembler implements Assembler<CalificacionDomain, CalificacionDTO, CalificacionEntity> {
 
 	private static final Assembler<CalificacionDomain, CalificacionDTO, CalificacionEntity> INSTANCE = new CalificacionAssembler();
 

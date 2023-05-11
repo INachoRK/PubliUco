@@ -82,78 +82,8 @@ public class ComentarioRevisorAssembler
 	}
 
 	@Override
-	public co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDTO toDTOFromDomain(
+	public ComentarioRevisorDTO toDTOFromDomain(
 			co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDomain domian) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDomain toDomainFromDto(
-			co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ComentarioRevisorEntity toEntityFromDomain(
-			co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDomain domain) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDTO toDTOFromDomain(
-			co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDomain domian) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDomain toDomainFromDto(
-			co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ComentarioRevisorEntity toEntityFromDomain(
-			co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDomain domain) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDTO toDTOFromDomain(
-			co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDomain domian) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDomain toDomainFromDto(
-			co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ComentarioRevisorEntity toEntityFromDomain(
-			co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDomain domain) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDTO toDTOFromDomain(
-			co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDomain domian) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDomain toDomainFromDto(
-			co.edu.uco.publiuco.business.assembler.concrete.ComentarioRevisorDTO dto) {
 		// TODO Auto-generated method stub
 		return null;
 	}
