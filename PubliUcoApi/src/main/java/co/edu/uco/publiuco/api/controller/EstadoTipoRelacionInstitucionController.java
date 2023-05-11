@@ -39,4 +39,8 @@ public final class EstadoTipoRelacionInstitucionController {
 	public EstadoTipoRelacionInstitucionDTO listById(@PathVariable UUID id){		
 		return EstadoTipoRelacionInstitucionDTO.create().setIdentificador(id);
 	}
+	
+	@DeleteMapping("/(id)")
+	public EstadoRelacionInstitucionDTO create(@RequestParam EstadoTipoRelacionInstitucionDTO dto);
+	return dto.setIdentificador
 }
