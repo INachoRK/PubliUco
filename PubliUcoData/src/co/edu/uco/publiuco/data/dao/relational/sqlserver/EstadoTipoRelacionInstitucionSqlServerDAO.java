@@ -2,9 +2,10 @@ package co.edu.uco.publiuco.data.dao.relational.sqlserver;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.uco.publiuco.crosscutting.exception.PubliUcoDataException;
+import co.edu.uco.publiuco.crosscutting.exception.PubliucoDataException;
 import co.edu.uco.publiuco.crosscutting.utils.UtilObject;
 import co.edu.uco.publiuco.crosscutting.utils.UtilText;
 import co.edu.uco.publiuco.crosscutting.utils.UtilUUID;
@@ -21,39 +22,28 @@ public final class EstadoTipoRelacionInstitucionSqlServerDAO extends SqlDAO<Esta
 
 	@Override
 	public final void create(final EstadoTipoRelacionInstitucionEntity entity) {
-		
-		var sqlStatement = "UPDATE EstadotipoRelacionInstitucion SET nombre=?, descripcion= ? WHERE identificador=?";
-		
-			try (var prepareStatement = getConnection().prepareStatement(sqlStatement)) {
-			
-			prepareStatement.setString(1, entity.getNombre());
-			prepareStatement.setString(2, entity.getDescripcion());
-			prepareStatement.setObject(3, entity.getIdentificador());
-			
-			prepareStatement.executeUpdate();
-			
-		
-		var sqlStatement = "INSERT INTO EstadoTipoRelacionInstitucion(codigo, nombre, descripcion)";
-		
-		try (var prepareStatement = getConnection().prepareStatement(sqlStatement)) {
-			
-			prepareStatement.setObject(1, entity.getIdentificador());
-			prepareStatement.setString(2, entity.getNombre());
-			prepareStatement.setString(3, entity.getDescripcion());
-			
-			prepareStatement.executeUpdate();
-			
-		} catch (final SQLException exception) {
-			var userMessage = "Se ha registrado un problema al crear un nuevo tipo relacion institución...";
-			var technicalMessage = "Se ha presentado un error de tipo SQLException dentro del método EstadoTipoRelacionInstitucionSQLDAO";
-			
-			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
-			
-		} catch (final Exception exception) {
-			var userMessage = "Se ha registrado un problema inesperado al crear un nuevo tipo relacion institución...";
-			var technicalMessage = "Se ha presentado un problema inesperado del método EstadoTipoRelacionInstitucionSQLDAO";
+		var sqlStatement = "INSERT INTO EstadoTipoRelacionInstitucion(identificador, nombre, descripcion) VALUES (?,?,?)";
+
+		try (var PreparedStatement = getConnection().prepareStatement(sqlStatement)) {
+
+			PreparedStatement.setObject(1, entity.getIdentificador());
+			PreparedStatement.setString(2, entity.getNombre());
+			PreparedStatement.setString(3, entity.getDescripcion());
+
+			PreparedStatement.executeUpdate();
+
+		} catch (SQLException exception) {
+			var userMessage = "Se ha presentado un problema tratando de registrar la informacion del nuevo estado de tipo relacion institucion";
+			var technicalMessage = "Se ha presentado un problema de tipo SQLException dentro del metodo create de la clase EstadoTipoRelacionInstitucionSqlServerDAO. Por favor revise la traza completa del error";
+
+			throw PubliucoDataException.create(technicalMessage, userMessage, exception);
+		} catch (Exception exception) {
+			var userMessage = "Se ha presentado un problema inesperado tratando de registrar la informacion del nuevo estado de tipo relacion institucion";
+			var technicalMessage = "Se ha presentado un problema inesperadp dentro del metodo create de la clase EstadoTipoRelacionInstitucionSqlServerDAO. Por favor revise la traza completa del error";
+
+			throw PubliucoDataException.create(technicalMessage, userMessage, exception);
+
 		}
-		
 
 	}
 
@@ -61,62 +51,60 @@ public final class EstadoTipoRelacionInstitucionSqlServerDAO extends SqlDAO<Esta
 	public final List<EstadoTipoRelacionInstitucionEntity> read(final EstadoTipoRelacionInstitucionEntity entity) {
 		var sqlStatement = new StringBuilder();
 		var parameters = new ArrayList<>();
-		
+
 		sqlStatement.append(prepareSelect());
 		sqlStatement.append(prepareFrom());
 		sqlStatement.append(prepareWhere(entity, parameters));
 		sqlStatement.append(prepareOrderBy());
-		
-		try (var preparedStatement = getConnection().preparedStatement(sqlStatement.toString())) {
-			
-		}catch (SQLException exception) {
-			//TODO: handle exception
-		}catch (Exception exception) {
-			//TODO: handle exception
+
+		try (var preparedStatement = getConnection().prepareStatement(sqlStatement.toString())) {
+
+		} catch (SQLException exception) {
+			// TODO: handle exception
+		} catch (Exception exception) {
+			// TODO: handle exception
 		}
-		
+
 		return null;
 	}
 
 	@Override
 	protected final String prepareSelect() {
-		return "SELECT identificador, nombre, descripcion";
+		return "SELECT identificador, nombre, descripcion ";
 	}
 
 	@Override
 	protected final String prepareFrom() {
-		return "FROM EstadotipoRelacionInsttitucion";
+		return "FROM EstadoTipoRElacionInstitucion ";
 	}
 
 	@Override
-	protected final String prepareWhere(EstadoTipoRelacionInstitucionEntity entity, List<Object> parameters) {
-		
+	protected final String prepareWhere(final EstadoTipoRelacionInstitucionEntity entity, List<Object> parameters) {
 		final var where = new StringBuilder("");
 		parameters = UtilObject.getDefault(parameters, new ArrayList<>());
-		
-		var steWhere = true;
-		
+		var setWhere = true;
+
 		if (!UtilObject.isNull(entity)) {
-			
-			if(UtilUUID.isDefault(entity.getIdentificador())) {
+
+			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
-				where.append("WHERE identificador=?");
+				where.append("WHERE identificador=? ");
 				setWhere = false;
 			}
-			
-			if(UtilText.getUtilText().isEmpty(entity.getNombre())) {
+
+			if (!UtilText.getUtilText().isEmpty(entity.getNombre())) {
 				parameters.add(entity.getNombre());
 				where.append(setWhere ? "WHERE " : "AND ").append("nombre=? ");
 				setWhere = false;
 			}
-			
-			if(UtilText.getUtilText().isEmpty(entity.getDescripcion())) {
+
+			if (!UtilText.getUtilText().isEmpty(entity.getDescripcion())) {
 				parameters.add(entity.getDescripcion());
-				where.append("WHERE descripcion LIKE %?%");
+				where.append(setWhere ? "WHERE " : "AND ").append("descripcion LIKE %?% ");
 			}
-			
+
 		}
-		
+
 		return where.toString();
 	}
 
@@ -124,5 +112,4 @@ public final class EstadoTipoRelacionInstitucionSqlServerDAO extends SqlDAO<Esta
 	protected final String prepareOrderBy() {
 		return "ORDER BY nombre ASC";
 	}
-	
 }
