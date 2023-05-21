@@ -49,16 +49,15 @@ public class SuscripcionPublicacionAssembler
 	}
 
 	@Override
-	public SuscripcionPublicacionDomain toDomainFromDto(
-			co.edu.uco.publiuco.business.assembler.concrete.SuscripcionPublicacionDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<SuscripcionPublicacionDomain> toDomainListFromEntityList(
+			List<SuscripcionPublicacionEntity> entityList) {
+
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
 	}
 
 	@Override
-	public List<SuscripcionPublicacionDomain> toDomainListFromEntity(List<SuscripcionPublicacionEntity> entityList) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<SuscripcionPublicacionDTO> toDTOListFromDomainList(List<SuscripcionPublicacionDomain> domainList) {
+		return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();
 	}
 
 }

@@ -58,9 +58,14 @@ public class RevisorRevisionAssembler
 	}
 
 	@Override
-	public List<RevisorRevisionDomain> toDomainListFromEntity(List<RevisorRevisionEntity> entityList) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<RevisorRevisionDomain> toDomainListFromEntityList(List<RevisorRevisionEntity> entityList) {
+
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<RevisorRevisionDTO> toDTOListFromDomainList(List<RevisorRevisionDomain> domainList) {
+		return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();
 	}
 
 }

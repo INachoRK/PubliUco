@@ -49,9 +49,14 @@ public class SuscripcionCategoriaAssembler
 	}
 
 	@Override
-	public List<SuscripcionCategoriaDomain> toDomainListFromEntity(List<SuscripcionCategoriaEntity> entityList) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<SuscripcionCategoriaDomain> toDomainListFromEntityList(List<SuscripcionCategoriaEntity> entityList) {
+
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<SuscripcionCategoriaDTO> toDTOListFromDomainList(List<SuscripcionCategoriaDomain> domainList) {
+		return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();
 	}
 
 }

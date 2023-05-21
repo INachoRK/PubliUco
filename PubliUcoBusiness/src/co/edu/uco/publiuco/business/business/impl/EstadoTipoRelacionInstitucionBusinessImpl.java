@@ -32,6 +32,6 @@ public final class EstadoTipoRelacionInstitucionBusinessImpl implements EstadoTi
 		List<EstadoTipoRelacionInstitucionEntity> resultEntityList = daoFactory.getEstadoTipoRelacionInstitucionDAO()
 				.read(entity);
 
-		return EstadoTipoRelacionInstitucionAssembler.getInstance().toDomainListFromEntity(resultEntityList);
+		return EstadoTipoRelacionInstitucionAssembler.getInstance().toDomainListFromEntityList(resultEntityList);
 	}
 }

@@ -19,12 +19,10 @@ public final class EstadoTipoRelacionInstitucionEntity {
 		setDescripcion(UtilText.getUtilText().getDefaultValue());
 	}
 
-	public EstadoTipoRelacionInstitucionEntity(final UUID identificador, final String nombre,
-			final String descripcion) {
-		super();
-		setIdentificador(identificador);
-		setNombre(nombre);
-		setDescripcion(descripcion);
+	public static final EstadoTipoRelacionInstitucionEntity createWithIdentificador(final UUID identificador, final String nombr final String descripcion) {
+		return new EstadoTipoRelacionInstitucionEntity(UtilUUID.DEFAULT_UUID,
+				nombre,
+				UtilText.EMPTY);
 	}
 
 	public static EstadoTipoRelacionInstitucionEntity getDefaultObject() {

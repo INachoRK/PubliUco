@@ -45,8 +45,13 @@ public class TipoAccesoAssembler implements Assembler<TipoAccesoDomain, TipoAcce
 	}
 
 	@Override
-	public List<TipoAccesoDomain> toDomainListFromEntity(List<TipoAccesoEntity> entityList) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<TipoAccesoDomain> toDomainListFromEntityList(List<TipoAccesoEntity> entityList) {
+
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<TipoAccesoDTO> toDTOListFromDomainList(List<TipoAccesoDomain> domainList) {
+		return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();
 	}
 }
