@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-import co.edu.uco.publiuco.crosscutting.exception.PubliucoDataException;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoDataException;
 import co.edu.uco.publiuco.data.dao.TipoRelacionInstitucionDAO;
 import co.edu.uco.publiuco.data.dao.relational.SqlDAO;
 import co.edu.uco.publiuco.entities.TipoRelacionInstitucionEntity;
@@ -43,12 +43,12 @@ public final class TipoRelacionInstitucionSqlServerDAO extends SqlDAO implements
 			var userMessage = "Se ha presentado un problema tratando de modificar la informacion del estado de tipo relacion institucion deseado";
 			var technicalMessage = "Se ha presentado un problema de tipo SQLException dentro del metodo update de la clase EstadoTipoRelacionInstitucionSqlServerDAO. Por favor revise la traza completa del error";
 
-			throw PubliucoDataException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
 		} catch (Exception exception) {
 			var userMessage = "Se ha presentado un problema inesperado tratando de actualizar la informacion del estado de tipo relacion institucion deseado";
 			var technicalMessage = "Se ha presentado un problema inesperadp dentro del metodo create de la clase EstadoTipoRelacionInstitucionSqlServerDAO. Por favor revise la traza completa del error";
 
-			throw PubliucoDataException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
 
 		}
 
@@ -68,12 +68,12 @@ public final class TipoRelacionInstitucionSqlServerDAO extends SqlDAO implements
 			var userMessage = "Se ha presentado un problema tratando de modificar la informacion del estado de tipo relacion institucion deseado";
 			var technicalMessage = "Se ha presentado un problema de tipo SQLException dentro del metodo update de la clase EstadoTipoRelacionInstitucionSqlServerDAO. Por favor revise la traza completa del error";
 
-			throw PubliucoDataException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
 		} catch (Exception exception) {
 			var userMessage = "Se ha presentado un problema inesperado tratando de actualizar la informacion del estado de tipo relacion institucion deseado";
 			var technicalMessage = "Se ha presentado un problema inesperadp dentro del metodo create de la clase EstadoTipoRelacionInstitucionSqlServerDAO. Por favor revise la traza completa del error";
 
-			throw PubliucoDataException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
 
 		}
 

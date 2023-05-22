@@ -2,7 +2,6 @@ package co.edu.uco.publiuco.data.dao.factory.relational.sqlserver;
 
 import java.sql.Connection;
 
-import co.edu.uco.publiuco.crosscutting.utils.UtilSql;
 import co.edu.uco.publiuco.data.dao.AdministradorCategoriaDAO;
 import co.edu.uco.publiuco.data.dao.CalificacionDAO;
 import co.edu.uco.publiuco.data.dao.CategoriaAdministradorCategoriaDAO;
@@ -105,41 +104,41 @@ import co.edu.uco.publiuco.data.dao.relational.sqlserver.TipoReporteSqlServerDAO
 import co.edu.uco.publiuco.data.dao.relational.sqlserver.TipoRevisionSqlServerDAO;
 import co.edu.uco.publiuco.data.dao.relational.sqlserver.VersionSqlServerDAO;
 
-public final class SqlServerDAOFactory extends DAOFactory {
-
+public final class SqlServerDAOFactory extends DAOFactory{
+	
 	private Connection connection;
-
+	
 	public SqlServerDAOFactory() {
-		openConection();
+		abrirConexion();
 	}
 
 	@Override
-	protected final void openConection() {
-		//
+	protected final void abrirConexion() {
+		
 	}
 
 	@Override
-	public final void closeConection() {
-		UtilSql.closeConnection(connection);
-
+	public final void cerrarConexion() {
+		
+		
 	}
 
 	@Override
-	public final void initTransaction() {
-		// setAutoCommit->false
-
+	public final void iniciarTransaccion() {
+		
+		
 	}
 
 	@Override
-	public final void commitTransaction() {
-		// commit
-
+	public final void confirmarTransaccion() {
+		
+		
 	}
 
 	@Override
-	public final void cancelTransaction() {
-		// rollback
-
+	public final void cancelarTransaccion() {
+		
+		
 	}
 
 	@Override

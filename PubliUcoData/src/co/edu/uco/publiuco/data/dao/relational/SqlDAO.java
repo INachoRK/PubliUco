@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.util.List;
 
 import co.edu.uco.publiuco.crosscutting.exception.PubliUcoDataException;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoDataException;
 import co.edu.uco.publiuco.crosscutting.utils.UtilSql;
 
 public abstract class SqlDAO<E> {
