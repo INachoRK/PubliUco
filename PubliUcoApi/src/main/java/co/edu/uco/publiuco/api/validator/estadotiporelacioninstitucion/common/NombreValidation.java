@@ -1,4 +1,4 @@
-package co.edu.uco.publiuco.api.estadotiporelacioninstitucion.common;
+package co.edu.uco.publiuco.api.validator.estadotiporelacioninstitucion.common;
 
 import co.edu.uco.publiuco.api.validator.Result;
 import co.edu.uco.publiuco.crosscutting.utils.UtilText;

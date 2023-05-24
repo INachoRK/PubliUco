@@ -1,62 +1,63 @@
 package co.edu.uco.publiuco.business.business.impl;
 
 import java.util.List;
+import java.util.UUID;
 
 import co.edu.uco.publiuco.business.assembler.concrete.EstadoTipoRelacionInstitucionAssembler;
 import co.edu.uco.publiuco.business.business.EstadoTipoRelacionInstitucionBusiness;
 import co.edu.uco.publiuco.business.domain.EstadoTipoRelacionInstitucionDomain;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoBusinessException;
+import co.edu.uco.publiuco.crosscutting.utils.UtilUUID;
 import co.edu.uco.publiuco.data.dao.factory.DAOFactory;
 import co.edu.uco.publiuco.entities.EstadoTipoRelacionInstitucionEntity;
 
-public class EstadoTipoRelacionIntitucionBusinessImpl  implements EstadoTipoRelacionInstitucionBusiness{
+public final class EstadoTipoRelacionIntitucionBusinessImpl implements EstadoTipoRelacionInstitucionBusiness {
 
-private DAOFactory daoFactory;
+	private DAOFactory daoFactory;
 
-public EstadoTipoRelacionIntitucionBusinessImpl (final DAOFactory daoFactory) {
-	this.daoFactory = daoFactory;
-}
+	public EstadoTipoRelacionIntitucionBusinessImpl(final DAOFactory daoFactory) {
+		this.daoFactory = daoFactory;
+	}
 
+	@Override
+	public final void register(final EstadoTipoRelacionInstitucionDomain domain) {
 
-public final void register(final EstadoTipoRelacionInstitucionDomain domain) {
-	EstadoTipoRelacionInstitucionEntity entity = EstadoTipoRelacionInstitucionAssembler
-			.getInstance().toEntityFromDomain(domain);
-	daoFactory.getEstadoTipoRelacionInstitucionDAO();EstadoTipoRelacionIntitucionBusinessImpl.create(entity);
+		UUID identificador;
+		EstadoTipoRelacionInstitucionEntity entityTmp;
+		List<EstadoTipoRelacionInstitucionEntity> result;
 
+		do {
+			identificador = UtilUUID.generateNewUUID();
+			entityTmp = EstadoTipoRelacionInstitucionEntity.createWithIdentificador(identificador);
+			result = daoFactory.getEstadoTipoRelacionInstitucionDAO().read(entityTmp);
+		} while (!result.isEmpty());
 
-    }
+		entityTmp = EstadoTipoRelacionInstitucionEntity.createWithNombre(domain.getNombre());
+		result = daoFactory.getEstadoTipoRelacionInstitucionDAO().read(entityTmp);
 
+		if (!result.isEmpty()) {
+			throw PubliUcoBusinessException.create(
+					"El estado de tipo relacion institucion que intenta crear ya existe, por favor verifique los datos y de ser necesario proceda a actualizarlo");
 
-private static void create(EstadoTipoRelacionInstitucionEntity entity) {
-	// TODO Auto-generated method stub
-	
-}
+		}
 
+		final var domainToCreate = new EstadoTipoRelacionInstitucionDomain(identificador, domain.getNombre(),
+				domain.getDescripcion());
 
-@Override
-public void registrer(EstadoTipoRelacionInstitucionDomain domain) {
-	// TODO Auto-generated method stub
-	
-}
+		final EstadoTipoRelacionInstitucionEntity entity = EstadoTipoRelacionInstitucionAssembler.getInstance()
+				.toEntityFromDomain(domainToCreate);
+		daoFactory.getEstadoTipoRelacionInstitucionDAO().create(entity);
+	}
 
+	@Override
+	public final List<EstadoTipoRelacionInstitucionDomain> list(final EstadoTipoRelacionInstitucionDomain domain) {
 
-@Override
-public List<EstadoTipoRelacionInstitucionDomain> list(EstadoTipoRelacionInstitucionDomain domain) {
-	// TODO Auto-generated method stub
-	return null;
-}
+		final EstadoTipoRelacionInstitucionEntity entity = EstadoTipoRelacionInstitucionAssembler.getInstance()
+				.toEntityFromDomain(domain);
 
+		List<EstadoTipoRelacionInstitucionEntity> resultEntityList = daoFactory.getEstadoTipoRelacionInstitucionDAO()
+				.read(entity);
 
-@Override
-public void modify(EstadoTipoRelacionInstitucionDomain domain) {
-	// TODO Auto-generated method stub
-	
-}
-
-
-@Override
-public void drop(EstadoTipoRelacionInstitucionDomain domain) {
-	// TODO Auto-generated method stub
-	
-}
-
+		return EstadoTipoRelacionInstitucionAssembler.getInstance().toDomainListFromEntityList(resultEntityList);
+	}
 }

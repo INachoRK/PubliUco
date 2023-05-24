@@ -1,6 +1,7 @@
-package co.edu.uco.publiuco.api.estadotiporelacioninstitucion.common;
+package co.edu.uco.publiuco.api.validator.estadotiporelacioninstitucion.common;
 
 import co.edu.uco.publiuco.api.validator.Result;
+import co.edu.uco.publiuco.api.validator.Validation;
 
 public class DescripcionValidation implements Validation<String> {
 	
@@ -22,6 +23,12 @@ public class DescripcionValidation implements Validation<String> {
 		
 		return result;
 		
+	}
+
+	@Override
+	public Result execute(Throwable data) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

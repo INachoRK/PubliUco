@@ -9,7 +9,6 @@ import java.util.UUID;
 
 import co.edu.uco.publiuco.crosscutting.exception.PubliUcoDataException;
 import co.edu.uco.publiuco.crosscutting.exception.PubliUcoException;
-import co.edu.uco.publiuco.crosscutting.exception.PubliUcoDataException;
 import co.edu.uco.publiuco.crosscutting.utils.UtilObject;
 import co.edu.uco.publiuco.crosscutting.utils.UtilText;
 import co.edu.uco.publiuco.crosscutting.utils.UtilUUID;

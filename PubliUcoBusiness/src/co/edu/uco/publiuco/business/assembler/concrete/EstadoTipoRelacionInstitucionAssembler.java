@@ -56,4 +56,4 @@ public final class EstadoTipoRelacionInstitucionAssembler implements
 		// TODO Auto-generated method stub
 		return null;
 	}
-}
+} 

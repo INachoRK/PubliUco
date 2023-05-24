@@ -6,8 +6,8 @@ import co.edu.uco.publiuco.business.assembler.concrete.EscritorPublicacionAssemb
 import co.edu.uco.publiuco.business.business.EscritorPublicacionBusiness;
 import co.edu.uco.publiuco.business.business.impl.EscritorPublicacionBusinessImpl;
 import co.edu.uco.publiuco.business.facade.EscritorPublicacionFacade;
-import co.edu.uco.publiuco.crosscutting.exception.PubliucoBusinessException;
-import co.edu.uco.publiuco.crosscutting.exception.PubliucoException;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoBusinessException;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoException;
 import co.edu.uco.publiuco.crosscutting.utils.Messages.EscritorPublicacionFacadeImplMessages;
 import co.edu.uco.publiuco.data.dao.factory.DAOFactory;
 import co.edu.uco.publiuco.data.dao.factory.Factory;
@@ -32,7 +32,7 @@ public final class EscritorPublicacionFacadeImpl implements EscritorPublicacionF
 			daoFactory.initTransaction();
 			business.register(domain);
 			daoFactory.commitTransaction();
-		} catch (PubliucoException exception) {
+		} catch (PubliUcoException exception) {
 			daoFactory.cancelTransaction();
 			throw exception;
 		} catch (Exception exception) {
@@ -41,7 +41,7 @@ public final class EscritorPublicacionFacadeImpl implements EscritorPublicacionF
 			var userMessage = EscritorPublicacionFacadeImplMessages.REGISTER_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = EscritorPublicacionFacadeImplMessages.REGISTER_EXCEPTION_TECHNICAL_MESSAGE;
 
-			throw PubliucoBusinessException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {
 			daoFactory.closeConection();
 		}
@@ -55,13 +55,13 @@ public final class EscritorPublicacionFacadeImpl implements EscritorPublicacionF
 			final var returnDomainList = business.list(domain);
 
 			return EscritorPublicacionAssembler.getInstance().toDTOListFromDomainList(returnDomainList);
-		} catch (final PubliucoException exception) {
+		} catch (final PubliUcoException exception) {
 			throw exception;
 		} catch (final Exception exception) {
 			var userMessage = EscritorPublicacionFacadeImplMessages.LIST_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = EscritorPublicacionFacadeImplMessages.LIST_EXCEPTION_TECHNICAL_MESSAGE;
 
-			throw PubliucoBusinessException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {
 			daoFactory.closeConection();
 		}
@@ -76,7 +76,7 @@ public final class EscritorPublicacionFacadeImpl implements EscritorPublicacionF
 			daoFactory.initTransaction();
 			business.modify(domain);
 			daoFactory.commitTransaction();
-		} catch (PubliucoException exception) {
+		} catch (PubliUcoException exception) {
 			daoFactory.cancelTransaction();
 			throw exception;
 		} catch (Exception exception) {
@@ -85,7 +85,7 @@ public final class EscritorPublicacionFacadeImpl implements EscritorPublicacionF
 			var userMessage = EscritorPublicacionFacadeImplMessages.MODIFY_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = EscritorPublicacionFacadeImplMessages.MODIFY_EXCEPTION_TECHNICAL_MESSAGE;
 
-			throw PubliucoBusinessException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {
 			daoFactory.closeConection();
 		}
@@ -101,7 +101,7 @@ public final class EscritorPublicacionFacadeImpl implements EscritorPublicacionF
 			daoFactory.initTransaction();
 			business.drop(domain);
 			daoFactory.commitTransaction();
-		} catch (PubliucoException exception) {
+		} catch (PubliUcoException exception) {
 			daoFactory.cancelTransaction();
 			throw exception;
 		} catch (Exception exception) {
@@ -110,7 +110,7 @@ public final class EscritorPublicacionFacadeImpl implements EscritorPublicacionF
 			var userMessage = EscritorPublicacionFacadeImplMessages.DROP_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = EscritorPublicacionFacadeImplMessages.DROP_EXCEPTION_TECHNICAL_MESSAGE;
 
-			throw PubliucoBusinessException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {
 			daoFactory.closeConection();
 		}

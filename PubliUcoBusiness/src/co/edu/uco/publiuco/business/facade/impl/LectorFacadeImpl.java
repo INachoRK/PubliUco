@@ -6,8 +6,8 @@ import co.edu.uco.publiuco.business.assembler.concrete.LectorAssembler;
 import co.edu.uco.publiuco.business.business.LectorBusiness;
 import co.edu.uco.publiuco.business.business.impl.LectorBusinessImpl;
 import co.edu.uco.publiuco.business.facade.LectorFacade;
-import co.edu.uco.publiuco.crosscutting.exception.PubliucoBusinessException;
-import co.edu.uco.publiuco.crosscutting.exception.PubliucoException;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoBusinessException;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoException;
 import co.edu.uco.publiuco.crosscutting.utils.Messages.LectorFacadeImplMessages;
 import co.edu.uco.publiuco.data.dao.factory.DAOFactory;
 import co.edu.uco.publiuco.data.dao.factory.Factory;
@@ -32,7 +32,7 @@ public final class LectorFacadeImpl implements LectorFacade {
 			daoFactory.initTransaction();
 			business.register(domain);
 			daoFactory.commitTransaction();
-		} catch (PubliucoException exception) {
+		} catch (PubliUcoException exception) {
 			daoFactory.cancelTransaction();
 			throw exception;
 		} catch (Exception exception) {
@@ -41,7 +41,7 @@ public final class LectorFacadeImpl implements LectorFacade {
 			var userMessage = LectorFacadeImplMessages.REGISTER_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = LectorFacadeImplMessages.REGISTER_EXCEPTION_TECHNICAL_MESSAGE;
 
-			throw PubliucoBusinessException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {
 			daoFactory.closeConection();
 		}
@@ -55,13 +55,13 @@ public final class LectorFacadeImpl implements LectorFacade {
 			final var returnDomainList = business.list(domain);
 
 			return LectorAssembler.getInstance().toDTOListFromDomainList(returnDomainList);
-		} catch (final PubliucoException exception) {
+		} catch (final PubliUcoException exception) {
 			throw exception;
 		} catch (final Exception exception) {
 			var userMessage = LectorFacadeImplMessages.LIST_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = LectorFacadeImplMessages.LIST_EXCEPTION_TECHNICAL_MESSAGE;
 
-			throw PubliucoBusinessException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {
 			daoFactory.closeConection();
 		}
@@ -76,7 +76,7 @@ public final class LectorFacadeImpl implements LectorFacade {
 			daoFactory.initTransaction();
 			business.modify(domain);
 			daoFactory.commitTransaction();
-		} catch (PubliucoException exception) {
+		} catch (PubliUcoException exception) {
 			daoFactory.cancelTransaction();
 			throw exception;
 		} catch (Exception exception) {
@@ -85,7 +85,7 @@ public final class LectorFacadeImpl implements LectorFacade {
 			var userMessage = LectorFacadeImplMessages.MODIFY_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = LectorFacadeImplMessages.MODIFY_EXCEPTION_TECHNICAL_MESSAGE;
 
-			throw PubliucoBusinessException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {
 			daoFactory.closeConection();
 		}
@@ -101,7 +101,7 @@ public final class LectorFacadeImpl implements LectorFacade {
 			daoFactory.initTransaction();
 			business.drop(domain);
 			daoFactory.commitTransaction();
-		} catch (PubliucoException exception) {
+		} catch (PubliUcoException exception) {
 			daoFactory.cancelTransaction();
 			throw exception;
 		} catch (Exception exception) {
@@ -110,7 +110,7 @@ public final class LectorFacadeImpl implements LectorFacade {
 			var userMessage = LectorFacadeImplMessages.DROP_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = LectorFacadeImplMessages.DROP_EXCEPTION_TECHNICAL_MESSAGE;
 
-			throw PubliucoBusinessException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {
 			daoFactory.closeConection();
 		}

@@ -6,8 +6,8 @@ import co.edu.uco.publiuco.business.assembler.concrete.EstadoTipoEscritorAssembl
 import co.edu.uco.publiuco.business.business.EstadoTipoEscritorBusiness;
 import co.edu.uco.publiuco.business.business.impl.EstadoTipoEscritorBusinessImpl;
 import co.edu.uco.publiuco.business.facade.EstadoTipoEscritorFacade;
-import co.edu.uco.publiuco.crosscutting.exception.PubliucoBusinessException;
-import co.edu.uco.publiuco.crosscutting.exception.PubliucoException;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoBusinessException;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoException;
 import co.edu.uco.publiuco.crosscutting.utils.Messages.EstadoTipoEscritorFacadeImplMessages;
 import co.edu.uco.publiuco.data.dao.factory.DAOFactory;
 import co.edu.uco.publiuco.data.dao.factory.Factory;
@@ -32,7 +32,7 @@ public final class EstadoTipoEscritorFacadeImpl implements EstadoTipoEscritorFac
 			daoFactory.initTransaction();
 			business.register(domain);
 			daoFactory.commitTransaction();
-		} catch (PubliucoException exception) {
+		} catch (PubliUcoException exception) {
 			daoFactory.cancelTransaction();
 			throw exception;
 		} catch (Exception exception) {
@@ -41,7 +41,7 @@ public final class EstadoTipoEscritorFacadeImpl implements EstadoTipoEscritorFac
 			var userMessage = EstadoTipoEscritorFacadeImplMessages.REGISTER_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = EstadoTipoEscritorFacadeImplMessages.REGISTER_EXCEPTION_TECHNICAL_MESSAGE;
 
-			throw PubliucoBusinessException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {
 			daoFactory.closeConection();
 		}
@@ -55,13 +55,13 @@ public final class EstadoTipoEscritorFacadeImpl implements EstadoTipoEscritorFac
 			final var returnDomainList = business.list(domain);
 
 			return EstadoTipoEscritorAssembler.getInstance().toDTOListFromDomainList(returnDomainList);
-		} catch (final PubliucoException exception) {
+		} catch (final PubliUcoException exception) {
 			throw exception;
 		} catch (final Exception exception) {
 			var userMessage = EstadoTipoEscritorFacadeImplMessages.LIST_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = EstadoTipoEscritorFacadeImplMessages.LIST_EXCEPTION_TECHNICAL_MESSAGE;
 
-			throw PubliucoBusinessException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {
 			daoFactory.closeConection();
 		}

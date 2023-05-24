@@ -6,8 +6,8 @@ import co.edu.uco.publiuco.business.assembler.concrete.TipoRelacionInstitucionAs
 import co.edu.uco.publiuco.business.business.TipoRelacionInstitucionBusiness;
 import co.edu.uco.publiuco.business.business.impl.TipoRelacionInstitucionBusinessImpl;
 import co.edu.uco.publiuco.business.facade.TipoRelacionInstitucionFacade;
-import co.edu.uco.publiuco.crosscutting.exception.PubliucoBusinessException;
-import co.edu.uco.publiuco.crosscutting.exception.PubliucoException;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoBusinessException;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoException;
 import co.edu.uco.publiuco.crosscutting.utils.Messages.TipoRelacionInstitucionFacadeImplMessages;
 import co.edu.uco.publiuco.data.dao.factory.DAOFactory;
 import co.edu.uco.publiuco.data.dao.factory.Factory;
@@ -32,7 +32,7 @@ public class TipoRelacionInstitucionFacadeImpl implements TipoRelacionInstitucio
 			daoFactory.initTransaction();
 			business.register(domain);
 			daoFactory.commitTransaction();
-		} catch (PubliucoException exception) {
+		} catch (PubliUcoException exception) {
 			daoFactory.cancelTransaction();
 			throw exception;
 		} catch (Exception exception) {
@@ -41,7 +41,7 @@ public class TipoRelacionInstitucionFacadeImpl implements TipoRelacionInstitucio
 			var userMessage = TipoRelacionInstitucionFacadeImplMessages.REGISTER_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = TipoRelacionInstitucionFacadeImplMessages.REGISTER_EXCEPTION_TECHNICAL_MESSAGE;
 
-			throw PubliucoBusinessException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {
 			daoFactory.closeConection();
 		}
@@ -55,13 +55,13 @@ public class TipoRelacionInstitucionFacadeImpl implements TipoRelacionInstitucio
 			final var returnDomainList = business.list(domain);
 
 			return TipoRelacionInstitucionAssembler.getInstance().toDTOListFromDomainList(returnDomainList);
-		} catch (final PubliucoException exception) {
+		} catch (final PubliUcoException exception) {
 			throw exception;
 		} catch (final Exception exception) {
 			var userMessage = TipoRelacionInstitucionFacadeImplMessages.LIST_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = TipoRelacionInstitucionFacadeImplMessages.LIST_EXCEPTION_TECHNICAL_MESSAGE;
 
-			throw PubliucoBusinessException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {
 			daoFactory.closeConection();
 		}
@@ -76,7 +76,7 @@ public class TipoRelacionInstitucionFacadeImpl implements TipoRelacionInstitucio
 			daoFactory.initTransaction();
 			business.modify(domain);
 			daoFactory.commitTransaction();
-		} catch (PubliucoException exception) {
+		} catch (PubliUcoException exception) {
 			daoFactory.cancelTransaction();
 			throw exception;
 		} catch (Exception exception) {
@@ -85,7 +85,7 @@ public class TipoRelacionInstitucionFacadeImpl implements TipoRelacionInstitucio
 			var userMessage = TipoRelacionInstitucionFacadeImplMessages.MODIFY_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = TipoRelacionInstitucionFacadeImplMessages.MODIFY_EXCEPTION_TECHNICAL_MESSAGE;
 
-			throw PubliucoBusinessException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {
 			daoFactory.closeConection();
 		}
@@ -101,7 +101,7 @@ public class TipoRelacionInstitucionFacadeImpl implements TipoRelacionInstitucio
 			daoFactory.initTransaction();
 			business.drop(domain);
 			daoFactory.commitTransaction();
-		} catch (PubliucoException exception) {
+		} catch (PubliUcoException exception) {
 			daoFactory.cancelTransaction();
 			throw exception;
 		} catch (Exception exception) {
@@ -110,7 +110,7 @@ public class TipoRelacionInstitucionFacadeImpl implements TipoRelacionInstitucio
 			var userMessage = TipoRelacionInstitucionFacadeImplMessages.DROP_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = TipoRelacionInstitucionFacadeImplMessages.DROP_EXCEPTION_TECHNICAL_MESSAGE;
 
-			throw PubliucoBusinessException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {
 			daoFactory.closeConection();
 		}

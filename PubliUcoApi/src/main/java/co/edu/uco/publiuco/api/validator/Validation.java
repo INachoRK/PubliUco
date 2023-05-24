@@ -1,9 +1,7 @@
 package co.edu.uco.publiuco.api.validator;
 
-import java.util.List:
-
-public class Validation<T> {
+public interface Validation<T> {
 	
-	Result execute(T data);
+	Result execute(Throwable data);
 
 }

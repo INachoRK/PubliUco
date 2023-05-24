@@ -1,6 +1,7 @@
 package co.edu.uco.publiuco.data.dao.relational.sqlserver;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -77,6 +78,42 @@ public final class TipoRelacionInstitucionSqlServerDAO extends SqlDAO implements
 
 		}
 
+	}
+
+	@Override
+	protected String prepareSelect() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String prepareFrom() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String prepareWhere(Object entity, List parameters) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String prepareOrderBy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected void setParameters(PreparedStatement preaPreparedStatement, List parameters) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected List executeQuery(PreparedStatement preparedStatement) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
