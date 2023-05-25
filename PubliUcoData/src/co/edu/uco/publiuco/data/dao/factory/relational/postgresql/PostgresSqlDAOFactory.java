@@ -109,19 +109,19 @@ public final class PostgresSqlDAOFactory extends DAOFactory {
 	private Connection connection;
 
 	public PostgresSqlDAOFactory() {
-		abrirConexion();
+		openConection();
 	}
 
 	@Override
-	protected void abrirConexion() {
+	protected void openConection() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void cerrarConexion() {
+	public void closeConection() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -392,16 +392,6 @@ public final class PostgresSqlDAOFactory extends DAOFactory {
 		return new ObservacionRevisionSqlServerDAO(connection);
 	}
 
-	@Override
-	protected void openConection() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void closeConection() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

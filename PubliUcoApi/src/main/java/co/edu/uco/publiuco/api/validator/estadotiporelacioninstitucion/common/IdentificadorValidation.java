@@ -15,7 +15,7 @@ public class IdentificadorValidation implements Validation<UUID> {
 		super();
 	}
 	
-	public static final Result validate(final EstadoTipoRelacionInstitucionDTO data) {
+	public static final Result validate(final UUID data) {
 		return new IdentificadorValidation().execute(data);
 	}
 	
@@ -23,13 +23,15 @@ public class IdentificadorValidation implements Validation<UUID> {
 		var result = Result.create();
 		
 		if(UtilObject.isNull(data));
-		result.addMessages("No es posible continuar con el idecador del estado del tipo relación institucion vacío");
+		result.addMessage("No es posible continuar con el idecador del estado del tipo relación institucion vacío");
 		if(UtilUUID.isDefault(data)) {
-			result.addMessages("no es posible tener el identificador por defecto del estado del tipo relacion institucion");
+			result.addMessage("no es posible tener el identificador por defecto del estado del tipo relacion institucion");
 		}
 		
 		return result;
 	}
+
+
 	
 	
 }

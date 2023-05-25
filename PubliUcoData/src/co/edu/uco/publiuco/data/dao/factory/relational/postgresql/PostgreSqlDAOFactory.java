@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import co.edu.uco.publiuco.crosscutting.exception.PubliucoCrossCuttingException;
-import co.edu.uco.publiuco.crosscutting.exception.PubliucoDataException;
-import co.edu.uco.publiuco.crosscutting.exception.PubliucoException;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoCrossCuttingException;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoDataException;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoException;
 import co.edu.uco.publiuco.crosscutting.utils.Messages.UtilSqlMessages;
 import co.edu.uco.publiuco.crosscutting.utils.UtilSql;
 import co.edu.uco.publiuco.data.dao.AdministradorCategoriaDAO;
@@ -125,23 +125,23 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 			connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/publiuco", "postgres",
 					"admin123");
 			UtilSql.connectionIsOpen(connection);
-		} catch (final PubliucoException exception) {
+		} catch (final PubliUcoException exception) {
 			throw exception;
 		} catch (IllegalArgumentException exception) {
 			var userMessage = UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE;
 			var technicalMessage = UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_ILEGAL_ARGUMENT_EXCEPTION;
 
-			throw PubliucoDataException.create(userMessage, technicalMessage, exception);
+			throw PubliUcoDataException.create(userMessage, technicalMessage, exception);
 		} catch (final NullPointerException exception) {
 			var userMessage = UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE;
 			var technicalMessage = UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_NULL_POINTER_EXCEPTION;
 
-			throw PubliucoDataException.create(userMessage, technicalMessage, exception);
+			throw PubliUcoDataException.create(userMessage, technicalMessage, exception);
 		} catch (final Exception exception) {
 			var userMessage = UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE;
 			var technicalMessage = UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_EXCEPTION;
 
-			throw PubliucoDataException.create(userMessage, technicalMessage, exception);
+			throw PubliUcoDataException.create(userMessage, technicalMessage, exception);
 		}
 
 	}
@@ -150,7 +150,7 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 	public void closeConection() {
 		try {
 			UtilSql.closeConnection(connection);
-		} catch (final PubliucoException exception) {
+		} catch (final PubliUcoException exception) {
 			throw exception;
 		}
 
@@ -161,13 +161,13 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 		try {
 			UtilSql.connectionIsOpen(connection);
 			connection.setAutoCommit(false);
-		} catch (final PubliucoException exception) {
+		} catch (final PubliUcoException exception) {
 			throw exception;
 		} catch (final SQLException exception) {
 			var userMessage = UtilSqlMessages.COMMIT_IS_STARTING_USER_MESSAGE;
 			var technicalMessage = UtilSqlMessages.COMMIT_TECHNICAL_SQL_EXCEPTION;
 
-			throw PubliucoCrossCuttingException.create(userMessage, technicalMessage, exception);
+			throw PubliUcoCrossCuttingException.create(userMessage, technicalMessage, exception);
 		}
 
 	}
@@ -177,13 +177,13 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 		try {
 			UtilSql.initCommitIsReady(connection);
 			connection.commit();
-		} catch (PubliucoException exception) {
+		} catch (PubliUcoException exception) {
 			throw exception;
 		} catch (SQLException exception) {
 			var userMessage = UtilSqlMessages.CONFIRM_COMMIT_USER_MESSAGE;
 			var technicalMessage = UtilSqlMessages.COMMIT_TECHNICAL_SQL_EXCEPTION;
 
-			throw PubliucoCrossCuttingException.create(userMessage, technicalMessage, exception);
+			throw PubliUcoCrossCuttingException.create(userMessage, technicalMessage, exception);
 		}
 
 	}
@@ -193,13 +193,13 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 		try {
 			UtilSql.initCommitIsReady(connection);
 			connection.rollback();
-		} catch (PubliucoException exception) {
+		} catch (PubliUcoException exception) {
 			throw exception;
 		} catch (SQLException exception) {
 			var userMessage = UtilSqlMessages.CANCEL_COMMIT_USER_MESSAGE;
 			var technicalMessage = UtilSqlMessages.COMMIT_TECHNICAL_SQL_EXCEPTION;
 
-			throw PubliucoCrossCuttingException.create(userMessage, technicalMessage, exception);
+			throw PubliUcoCrossCuttingException.create(userMessage, technicalMessage, exception);
 		}
 
 	}

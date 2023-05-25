@@ -25,10 +25,5 @@ public class DescripcionValidation implements Validation<String> {
 		
 	}
 
-	@Override
-	public Result execute(Throwable data) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

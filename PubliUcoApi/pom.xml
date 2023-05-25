@@ -32,6 +32,11 @@
 			<artifactId>PubliUcoDTO</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>co.edu.uco.publiuco</groupId>
+			<artifactId>PubliUcoBusiness</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>

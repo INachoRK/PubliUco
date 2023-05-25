@@ -20,8 +20,6 @@ import co.edu.uco.publiuco.api.validator.estadotiporelacioninstitucion.Registrar
 import co.edu.uco.publiuco.business.facade.EstadoTipoRelacionInstitucionFacade;
 import co.edu.uco.publiuco.business.facade.impl.EstadoTipoRelacionInstitucionFacadeImpl;
 import co.edu.uco.publiuco.crosscutting.exception.PubliUcoException;
-import co.edu.uco.publiuco.crosscutting.utils.Messages.CommonControllerMessages;
-import co.edu.uco.publiuco.crosscutting.utils.Messages.EstadoTipoRelacionInstitucionControllerMessages;
 import co.edu.uco.publiuco.dto.EstadoTipoRelacionInstitucionDTO;
 
 @RestController
@@ -31,15 +29,6 @@ public final class EstadoTipoRelacionInstitucionController {
 	Logger logger = LoggerFactory.getLogger(getClass());
 
 	private EstadoTipoRelacionInstitucionFacade facade;
-
-	public EstadoTipoRelacionInstitucionController() {
-		try {
-			facade = new EstadoTipoRelacionInstitucionFacadeImpl();
-		} catch (final PubliucoException exception) {
-			logger.error(exception.getType().toString().concat("_").concat(exception.getTechnicalMessage()), exception);
-		}
-		
-	}
 
 	@GetMapping("/dummy")
 	public EstadoTipoRelacionInstitucionDTO dummy() {
@@ -81,8 +70,9 @@ public final class EstadoTipoRelacionInstitucionController {
 			var result = RegistrarEstadoTipoRelacionInstitucionValidation.validate(dto);
 
 			if (result.getMessages().isEmpty()) {
+				facade = new EstadoTipoRelacionInstitucionFacadeImpl();
 				facade.register(dto);
-				response.getMessages().add(EstadoTipoRelacionInstitucionControllerMessages.REGISTER_NEW_SUCESS);
+				response.getMessages().add("Excepcion");
 			} else {
 				statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 				response.setMessages(result.getMessages());
@@ -94,7 +84,7 @@ public final class EstadoTipoRelacionInstitucionController {
 			logger.error(exception.getType().toString().concat("_").concat(exception.getTechnicalMessage()), exception);
 		} catch (final Exception exception) {
 			statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-			response.getMessages().add(  CommonControllerMessages.REGISTER_FAILED);
+			response.getMessages().add("excepcion");
 			logger.error("Se ha presentado un problema inesperado, Por favor valida la consola de logging");
 			
 		}
